@@ -24,9 +24,9 @@ Item Response Theory (IRT) evaluates, on the same scale, examinees who take diff
 Each line the number of exercises a student attempted.
 All learners work on the test items in the same order.
 
-1,1,1,0,1
-1,0,0,1,0
-0,0,0,1,1
-,
-,
-,
+1,1,1,0,1\\
+1,0,0,1,0\\
+0,0,0,1,1\\
+,\\
+,\\
+,\\
