@@ -460,7 +460,6 @@ for j in range(EPOCH_NUM):
 
         index = np.random.permutation(n2)
         #index = range(n2)
-        #ここで，ミニバッチ処理
         for i in range(0,n2,bs2):
             st = []
             it = []
@@ -500,7 +499,6 @@ for j in range(EPOCH_NUM):
             item = items[it,]
 
 
-            #分類
             if m_type == "classification":
                 answers = np.array(answers, dtype="int32")
             else:
@@ -545,9 +543,6 @@ plt.show()
 #chainer.serializers.save_npz("./model/"+names+"_filtered.npz", model)
 
 
-
-
-
 np.savetxt("the.csv",model.student_to_theta1.W.data,delimiter=",")
 np.savetxt("b.csv",model.student_to_theta1.b.data,delimiter=",")
 np.savetxt("the2.csv",model.student_to_theta1_2.W.data,delimiter =",")
@@ -567,98 +562,5 @@ np.savetxt("attention_b.csv",model.attention.b.data,delimiter=",")
 np.savetxt("hy.csv",model.hy.W.data,delimiter=",")
 np.savetxt("hy_b.csv",model.hy.b.data,delimiter=",")
 
-if n > n2:
-    nnn = n2
-else:
-    nnn = n
-
-#ここに明日やる
-ok = 0
-#st = np.array(student[0])
-#it = np.array(items[na_matrix[0,0]])
-st =[]
-it = []
-answers = []
-
-#for i in range(n):
-#    for j in range(len(na_matrix[i,])):
-        #print(i,na_matrix[i,],df.iloc[i,int(na_matrix[i,j]+ 1)])
-#        answers.append(df.iloc[i,int(na_matrix[i,j]+ 1)])
-
-        #if i == 0 & j == 0:
-        #    pare = pare + 1
-        #    continue
-        #st = np.array((st,student[i]),dtype="float32")
-#        st.append(students[i])
-        #print(it,items[na_matrix[i,j]])
-        #it = np.array((it,items[na_matrix[i,j]]),dtype="float32")
-#        it.append(items[na_matrix[i,j]])
 
 
-
-
-#Nullを除く
-#NullOrNot = df.isnull()
-
-#for i in range(len(NullOrNot)):
-#    for j in range(1,len(NullOrNot.columns)):
-#        if NullOrNot.iloc[i,j]==True:
-#            continue
-#        st.append(students[i])
-#        it.append(items[j-1])
-#        answers.append(df.iloc[i,j])
-
-#全てのデータの予測値
-
-"""
-for i in range(n):
-    for j in range(n2):
-        st.append(students[i])
-        it.append(items[j-1])
-
-
-st2 = np.array(st,dtype="float32")
-it2 = np.array(it,dtype="float32")
-xx = Variable(st2)
-xt = Variable(it2)
-yy, dumy = model.fwd(xx,xt,layer,height = height_num )
-ans = yy.data
-print("OK")
-
-ans = yy.data
-nrow, ncol = ans.shape
-
-
-matrix = np.random.randn(n,n2)
-cou = 0
-for j in range(n2):
-    for i in range(n):
-        cls = np.argmax(ans[cou,:])
-        matrix[i][j] = cls
-        cou = cou + 1
-
-    #print(np.where(st[i] == 1),np.where(it[i] ==1),cls,answers[i])
-    #if cls == answers[i]:
-        #ok = ok + 1
-
-matrix = pd.DataFrame(matrix)
-matrix.to_csv("Result.csv")
-"""
-
-    #print(ok,len(answers),ok /len(answers))
-
-#chainer.serializers.save_npz("/Users/ryo/Library/Mobile Documents/com~apple~CloudDocs/DeepIRT/Classi//model/"+names+".npz", model)
-#xx = Variable(students[0:nnn])
-#xt2=Variable(items[0:nnn])
-#yy =model.fwd(xx,xt2,layer)
-
-#ans = yy.data
-#nrow, ncol = ans.shape
-#ok = 0
-#for i in range(nrow):
-#    cls = np.argmax(ans[i,:])
-#    print(ans[i,:],cls,df.iloc[i,i+ 1])
-#    if cls == df.iloc[i,i+1]:
-#        ok = ok + 1
-
-#print(ok / nnn)
